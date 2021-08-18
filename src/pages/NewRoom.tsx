@@ -1,3 +1,6 @@
+import { useContext } from 'react';
+import { Link } from 'react-router-dom'
+import { AuthContext } from '../App';
 
 import ilustrationImg from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg'
@@ -7,6 +10,8 @@ import { Button } from '../components/Button';
 import '../styles/auth.scss';
 
 export function NewRoom() {
+    const { user } = useContext(AuthContext);
+
     return(
         <div id="page-auth">
             <aside>
@@ -17,6 +22,7 @@ export function NewRoom() {
             <main>
                 <div className="main-content">
                     <img src={logoImg} alt="Letmeask" />
+                    <h1>{ user?.name }</h1>
                     <h2>Criar uma nova sala</h2>
                     <form>
                         <input
@@ -27,7 +33,7 @@ export function NewRoom() {
                             Criar na sala
                         </Button>
                         <p>
-                            Quer entrar em uma sala existente? <a href="a">Clique aqui</a>
+                            Quer entrar em uma sala existente? <Link to="/">Clique aqui</Link>
                         </p>
                     </form>
                 </div>
